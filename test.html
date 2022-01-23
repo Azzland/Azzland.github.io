@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>This is a test page</title>
+</head>
+<body>
+<div class="dropdown">
+<button class="dropbtn">Dropdown</button>
+<div class="dropdown-content">
+<p>This is a message<p>
+</div>
+</div>
+<style>
+.dropbtn {
+background-color: blue;
+color: white;
+padding: 16px;
+font-size: 16px;
+}
+
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: green;
+z-index: 1;
+}
+
+.dropdown-content p {
+color: black;
+}
+
+.dropdown-content p: hover{
+background-color: red;
+}
+
+.dropdown: hover .dropdown-content{
+display: block;
+}
+
+.dropdown: hover .dropbtn {
+background-color: orange;
+}
+</style>
+</body>
+</html>

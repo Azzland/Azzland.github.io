@@ -1,0 +1,245 @@
+<html>
+<head>
+<title>PyQGIS Freight Zone Mapping</title>
+<link rel="stylesheet" href="Pt_style.css">
+</head>
+<body>
+<div id="projecttitle">
+<h1>Freight Zone mapping using PyQGIS</h1>
+<hr/>
+</div>
+
+<p>Last year I completed an Udemy short course on how to use Python programming to automate processes in QGIS. I have been using QGIS because it's free (unlike ArcGIS) and easily accessible for download and thus more convenient. </p>
+
+<p>I currently work as a dockhand and freight sorter for a freight company. Freight is sorted and stored into bays according to suburb. These bays are called zones. Each zone has one driver (except a few which may be so busy they require two). </p>
+
+<p>As a qualified GIS professional I thought it would be a good idea to use my GIS skills to do something relevant to my current work. This was done in my spare time and not part of my actual work role. I completed maps of all the freight zones in Perth.</p>
+
+<p>I learners how to develop a Python script to entirely automate the process of adding the input data, creating the output shapefiles, putting those shapefiles and basemap layers onto a map and exporting the maps as PDFs.</p>
+
+<p>The first stage was to collect the list of suburbs for each zone. This was easily obtained from info displayed in the bays. I gathered the list of zones and the suburbs in them into a txt file which was used in the PyQGIS program. </p>
+
+<p>A geojson containing all the suburbs in Western Australia was downloaded from data.gov.au. This was added to QGIS and saved as a shapefile. The geojson was removed and the shapefile was edited to include the suburbs around Perth and Mandurah. A shapefile containing the rivers and estuaries in Western Australia was downloaded from a WA government website and added to QGIS. As some of the suburb boundaries go into the Swan River and Peel estuaries I thought it was appropriate to edit the boundaries so that the freight zones reflect only the possible places drivers will complete their work. I used the clip function to trim the suburb boundaries so that they  are outside the Swan and Peel estuaries. Finally some suburbs are in multiple zones (for example a major road in one suburb is in one zone whilst the rest of the suburb is in another and other suburbs are shared between two zones based on location). So for these suburbs I had to draw lines and split the polygons for them. The resultant suburb shapefile is saved for use in the program. </p>
+
+<p>The PyQGIS program has a GUI interface that requests an input suburb shapefile, a text file containing the list of zones and the suburbs within them and requests the folder to save all output shapefiles and map PDFs. </p>
+
+<img src="Capture.png"></img>
+
+<p>The program opens the text file containing the zone information and stores the suburbs for each zone into an array. Each row in the array contains all the suburbs for a particular zone. It then goes through each row in the array and selects polygons that are the suburbs in that zone. These polygons are grouped together (by suburb name) and the resultant shapefile saved (SuburbsZone[X].shp).</p>
+
+<p>The selected polygons are then merged to create the zone area polygon and that is also saved as a shapefile.</p>
+
+<p>For this process the program asks the user what attribute contains the suburb names for creation of the zone shape and grouping of the zone suburbs and for labelling features on the map whether it's the same attribute or another attribute. </p>
+
+<img src="Capture2.png"></img>
+
+<img src="Capture3.png"></img>
+
+<p>After all the shapefiles are created each zone and the suburbs within it (both the zone area shapefile and the zone suburbs shapefile) are added to the map canvas with an Open Street Maps basemap, formatted and exported as a PDF. Each map consists of a title (showing the zone name), scalebar and north arrow. The map frame shape and size is scaled to fit both the size and shape of the zone area. For each zone the map frame size on the pdf might be different from each other. </p>
+
+<h2>The Freight Zones</h2>
+<ul type="circle">
+<li><a href="ZoneP1 AND P20.pdf">Zone P1 and P20</a></li>
+<li><a href="ZoneP2.pdf">Zone P2</a></li>
+<li><a href="ZoneP3.pdf">Zone P3</a></li>
+<li><a href="ZoneP4.pdf">Zone P4</a></li>
+<li><a href="ZoneP5.pdf">Zone P5</a></li>
+<li><a href="ZoneP6.pdf">Zone P6</a></li>
+<li><a href="ZoneP29.pdf">Zone P29</a></li>
+<li><a href="ZoneP7.pdf">Zone P7</a></li>
+<li><a href="ZoneP31.pdf">Zone P31</a></li>
+<li><a href="ZoneP8.pdf">Zone P8</a></li>
+<li><a href="ZoneP9.pdf">Zone P9</a></li>
+<li><a href="ZoneP33.pdf">Zone P33</a></li>
+<li><a href="ZoneP10.pdf">Zone P10</a></li>
+<li><a href="ZoneP11.pdf">Zone P11</a></li>
+<li><a href="ZoneP36.pdf">Zone P36</a></li>
+<li><a href="ZoneP12.pdf">Zone P12</a></li>
+<li><a href="ZoneP13.pdf">Zone P13</a></li>
+<li><a href="ZoneP40.pdf">Zone P40</a></li>
+<li><a href="ZoneP14.pdf">Zone P14</a></li>
+<li><a href="ZoneP15.pdf">Zone P15</a></li>
+<li><a href="ZoneP37.pdf">Zone P37</a></li>
+<li><a href="ZoneP16.pdf">Zone P16</a></li>
+<li><a href="ZoneP17.pdf">Zone P17</a></li>
+<li><a href="ZoneP32.pdf">Zone P32</a></li>
+<li><a href="ZoneP50.pdf">Zone P50</a></li>
+<li><a href="ZoneP18.pdf">Zone P18</a></li>
+<li><a href="ZoneP19.pdf">Zone P19</a></li>
+<li><a href="ZoneP21.pdf">Zone P21</a></li>
+<li><a href="ZoneP22.pdf">Zone P22</a></li>
+<li><a href="ZoneP23.pdf">Zone P23</a></li>
+<li><a href="ZoneP24.pdf">Zone P24</a></li>
+<li><a href="ZoneP35.pdf">Zone P35</a></li>
+<li><a href="ZoneP25.pdf">Zone P25</a></li>
+<li><a href="ZoneP26.pdf">Zone P26</a></li>
+<li><a href="ZoneP27.pdf">Zone P27</a></li>
+<li><a href="ZoneP28.pdf">Zone P28</a></li>
+<li><a href="ZoneP30.pdf">Zone P30</a></li>
+<li><a href="ZoneP34.pdf">Zone P34</a></li>
+
+<table>
+<tr>
+<th>Zone Name</th>
+<th>Localities</th>
+</tr>
+<tr>
+<td>P1 AND P20</td>
+<td>MANDURAH, GREENFIELDS, COODANUP, HALLS HEAD, DUDLEY PARK, SILVER SANDS, BARRAGUP</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>SAN REMO, MEADOW SPRINGS, PARKLANDS, LAKELANDS, MADORA BAY, KERALUP, SINGLETON, GOLDEN BAY, SECRET HARBOUR, BALDIVIS, ERSKINE, FALCON, HOPELAND</td>
+</tr>
+<tr>
+<td>P29</td>
+<td>SPEARWOOD, MUNSTER, HENDERSON, COOGEE, NORTH COOGEE, NAVAL BASE, WATTLEUP, HOPE VALLEY, SPEARWOOD, MUNSTER, CALISTA, ORELIA, KWINANA TOWN CENTRE, LEDA, PARMELIA, BERTRAM, WELLARD, ANKETELL, CASUARINA, THE SPECTACLES, POSTANS, MEDINA, KWINANA BEACH, WANDI, OAKFORD (WEST OF NICHOLSON RD), ATWELL, AUBIN GROVE, MANDOGALUP</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>EAST ROCKINGHAM, ROCKINGHAM, PERON, SHOALWATER, SAFETY BAY, HILLMAN, WAIKIKI, COOLOONGUP, WARNBRO, PORT KENNEDY, GARDEN ISLAND</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>BEELIAR, YANGEBUP, SOUTH LAKE, BIBRA LAKE, TREEBY, BANJUP, SUCCESS, COCKBURN CENTRAL, HAMMOND PARK, JANDAKOT</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>BATEMAN, MURDOCH, NORTH LAKE, COOLBELLUP, WINTHROP, KARDINYA, SAMSON, O'CONNOR, RIVERTON, WILLAGEE, LEEMING, BULL CREEK, WILLETTON, RIVERTON</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>NORTH FREMANTLE, FREMANTLE, EAST FREMANTLE, HILTON, WHITE GUM VALLEY, SOUTH FREMANTLE, HAMILTON HILL, BEACONSFIELD</td>
+</tr>
+<tr>
+<td>P31</td>
+<td>ROSSMOYNE, SHELLEY, BRENTWOOD, MOUNT PLEASANT, APPLECROSS, ARDROSS, ALFRED COVE, ATTADALE, BICTON, PALMYRA</td>
+</tr>
+<tr>
+<td>P7</td>
+<td>BOORAGOON, MELVILLE, MYAREE</td>
+</tr>
+<tr>
+<td>P8</td>
+<td>BELMONT, RIVERVALE, CLOVERDALE, BURSWOOD, CARLISLE, LATHLAIN</td>
+</tr>
+<tr>
+<td>P9</td>
+<td>CANNINGTON, BECKENHAM, BENTLEY, ST JAMES, EAST CANNINGTON, QUEENS PARK, WILSON</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>WELSHPOOL, KEWDALE</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>CANNING VALE, PARKWOOD, LANGFORD, LYNWOOD, FERNDALE</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>ORANGE GROVE, MARTIN, KELMSCOTT, ROLEYSTONE, CHAMPION LAKES, CAMILLO, SEVILLE GROVE, FORRESTDALE, HAYNES, HILBERT, KELMSCOTT, MOUNT NASURA, MOUNT RICHON, BEDFORDALE, ARMADALE, WUNGONG, BROOKDALE, DARLING DOWNS, BYFORD, KARRAGULLEN, OAKFORD (EAST OF NICHOLSON RD)</td>
+</tr>
+<tr>
+<td>P13</td>
+<td>FORRESTFIELD, HIGH WYCOMBE, WATTLE GROVE, LESMURDIE, WALLISTON, KALAMUNDA, MAIDA VALE, GOOSEBERRY HILL, KOONGAMIA, GREENMOUNT, HELENA VALLEY, BOYA</td>
+</tr>
+<tr>
+<td>P40</td>
+<td>NORTHAM, YORK, MUNDARING, RESERVIOR, SAWYERS VALLEY, MOUNT HELENA, CHIDLOW, WUNDOWIE, BAKERS HILL, CLACKLINE, THE LAKES, BEECHINA, WOOROLOO, PIESSE BROOK, PAULLS VALLEY, HACKETTS GULLY, HOVEA, PARKERVILLE, STONEVILLE, MAHOGANY CREEK, DARLINGTON, GLEN FORREST, MORANGUP, SPENCERS BROOK, HODDYS WELL, MURESK, TOODYAY, GIDGEGANNUP, CARMEL, BICKLEY, PICKERING BROOK, BAILUP, RESERVOIR</td>
+</tr>
+<tr>
+<td>P14</td>
+<td>PERTH AIRPORT, REDCLIFFE, ASCOT, HAZELMERE, SOUTH GUILDFORD, GUILDFORD, WOODBRIDGE, BUSHMEAD, MIDLAND (CLAYTON ST)</td>
+</tr>
+<tr>
+<td>P15</td>
+<td>MIDLAND, MIDVALE, BELLEVUE, SWAN VIEW, STRATTON, JANE BROOK, MIDDLE SWAN, HERNE HILL, VIVEASH</td>
+</tr>
+<tr>
+<td>P37</td>
+<td>ELLENBROOK, AVELEY, HENLEY BROOK, THE VINES, BRABHAM, DAYTON, UPPER SWAN, WEST SWAN, BELHUS, BASKERVILLE, MILLENDON, BULLSBROOK, BRIGADOON</td>
+</tr>
+<tr>
+<td>P16</td>
+<td>MALAGA, CULLACABARDEE, BALLAJURA, ALEXANDER HEIGHTS, KOONDOOLA, WHITEMAN</td>
+</tr>
+<tr>
+<td>P32</td>
+<td>NORANDA, MORLEY, BEDFORD, KIARA, LOCKRIDGE, BEECHBORO, BENNETT SPRINGS</td>
+</tr>
+<tr>
+<td>P17</td>
+<td>BAYSWATER, EMBLETON, EDEN HILL, ASHFIELD, BASSENDEAN, CAVERSHAM</td>
+<tr>
+<tr>
+<td>P18</td>
+<td>BALCATTA, STIRLING, TUART HILL, WESTMINSTER</td>
+</tr>
+<tr>
+<td>P19</td>
+<td>NORTHBRIDGE, NORTH PERTH, MOUNT LAWLEY, INGLEWOOD, MAYLANDS, LEEDERVILLE, COOLBINIA, MENORA, HIGHGATE, PERTH (NORTH OF RAILWAY LINE), WEST PERTH (NORTH OF FREEWAY)</td>
+</tr>
+<tr>
+<td>P21</td>
+<td>PERTH CBD, EAST PERTH</td>
+</tr>
+<tr>
+<td>P22</td>
+<td>KINGS PARK, NEDLANDS, SHENTON PARK, CRAWLEY, KARRAKATTA, CLAREMONT, MOUNT CLAREMONT, SWANBOURNE, COTTESLOE, DALKEITH, PEPPERMINT GROVE, MOSMAN PARK</td>
+</tr>
+<tr>
+<td>P23</td>
+<td>WEST PERTH, SUBIACO, WEST LEEDERVILLE, DAGLISH, JOLIMONT, WEMBLEY, FLOREAT, CITY BEACH, WEMBLEY DOWNS, CHURCHLANDS</td>
+</tr>
+<tr>
+<td>P35</td>
+<td>SCARBOROUGH, OSBORNE PARK (SCARBOROUGH BEACH ROAD), GLENDALOUGH, WOODLANDS, DOUBLEVIEW, JOONDANNA, INNALOO</td>
+</tr>
+<tr>
+<td>P25</td>
+<td>TRIGG, NORTH BEACH, WATERMANS BAY, MARMION, SORRENTO, DUNCRAIG, CARINE, KARRINYUP, GWELUP</td>
+<tr>
+<tr>
+<td>P26</td>
+<td>HILLARYS, MULLALOO, KALLAROO, OCEAN REEF, ILUKA, BURNS BEACH, KINROSS, CONNOLLY, HEATHRIDGE, BELDON, CRAIGIE, PADBURY, CURRAMBINE</td>
+</tr>
+<tr>
+<td>P27</td>
+<td>JOONDALUP, WOODVALE, EDGEWATER</td>
+</tr>
+<tr>
+<td>P28</td>
+<td>TAMALA PARK, MINDARIE, CLARKSON, MERRIWA, RIDGEWOOD, QUINNS ROCKS, JINDALEE, BUTLER, ALKIMOS, EGLINTON, YANCHEP, TWO ROCKS</td>
+</tr>
+<tr>
+<td>P30</td>
+<td>WANGARA, MADELEY, DARCH, LANDSDALE, GNANGARA, MARINGUP, JANDABUP</td>
+<tr>
+<tr>
+<td>P34</td>
+<td>WANNEROO, ASHBY, SINAGRA, TAPPING, KINGSLEY, GREENWOOD, BANKSIA GROVE, CARRAMAR, NOWERGUP, NEERABUP, CARABOODA, HOCKING, PEARSALL, PINJAR</td>
+<tr>
+<tr>
+<td>P24</td>
+<td>OSBORNE PARK, MOUNT HAWTHORN</td>
+</tr>
+<tr>
+<td>P33</td>
+<td>EAST VICTORIA PARK, VICTORIA PARK, KENSINGTON, SOUTH PERTH, COMO, MANNING, KARAWARA, WATERFORD, SALTER POINT</td>
+</tr>
+<tr>
+<td>P36</td>
+<td>MADDINGTON, GOSNELLS, KENWICK, THORNLIE, HUNTINGDALE, SOUTHERN RIVER, HARRISDALE, PIARA WATERS</td>
+</tr>
+<tr>
+<td>P50</td>
+<td>BALGA, MIRRABOOKA, NOLLAMARA, DIANELLA, GIRRAWHEEN, MARANGAROO, WARWICK, HAMERSLEY, YOKINE</td>
+</tr>
+</table>
+
+<h3>Code available <a href="FreightZones_pdfs.py">here</a></h3>
+
+<p>Aaron Brunt (last update 8 January 2022)</p>
+
+</body>
+</html>

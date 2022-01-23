@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>BAC Calculator</title>
+<link rel="stylesheet" href="Pt_style.css">
+</head>
+<body>
+<div id="projecttitle">
+<h1>BAC Calculator</h1>
+<hr/>
+</div>
+
+<figure class="wp-block-image size-large"><img src="https://azlancom.files.wordpress.com/2021/05/wp_story1621606020062_11990165861342713722.jpg?w=576" alt="" class="wp-image-48"/></figure>
+
+<p>Inspired by online BAC calculators I have used my Python programming skills to create my own Android application which calculates the blood alcohol concentration (BAC) based on personal characteristics (height, weight, age, gender, full or empty stomach), the time the drinking started, the current time and details of all drink types including volume and alcohol content as a percentage. </p>
+
+<p>The app was constructed using the Python Kivy library. It was constructed using button, text input and label widgets and the box layout method was used. Google Colab coding was used to deploy the app. </p>
+
+<p>The Widmark formula modified by the research of Posey and Mozayani in 2007 was used to estimate the BAC.</p>
+
+<p>The Widmark formula is the most common method to estimate the BAC and was developed by Swedish scientist Erik Widmark in 1932 (Brouwer 2004). Most BAC calculators online use this formula or their own variations of it.</p>
+
+<p>C = A/rW - Bt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Posey and Mozayani 2007)</p>
+
+<p>Where C is the blood alcohol concentration, A is the mass of alcohol consumed (g), r is the Widmark factor, W is the body weight (g), t is the time elapsed since drinking (hours) and B is the alcohol elimination rate (typically 0.015).</p>
+
+<p>The Widmark factor is typically 0.68 for males and 0.55 for females, both varying by plus or minus 0.11 (Posey and Mozayani 2007). The Widmark factor is dependent on weight, gender, body fat and age. This can be accurately determined by calculating the total body water (TBW) of the individual using a formula developed by Watson in 1980. The formulae are as follows.</p>
+
+<p>TBW(male) = 2.447 - 0.09156*age + 0.1074*height + 0.3362*weight.</p>
+
+<p>TBW(female) = -2.097 + 0.1069*height + 0.2466*weight</p>
+
+<p>Where age is in years, height is in cm and weight is in kg (Koperska 2020). The TBW is divided by the average weight to volume ratio of water in blood to give the Widmark constant r (Posey and Mozayani 2007).</p>
+
+<p>Posey and Mozayani in 2007 found that the presence of food in the stomach after eating can influence the rate of alcohol adsorped and the BAC. They modified the Widmark formula by including a rate constant, k, which is 6.5/hour for an empty stomach and 2.3/hour for a full stomach. The formula becomes.</p>
+
+<p>C = A(1 - exp(-kt))/rW - Bt</p>
+
+<figure class="wp-block-image size-large"><img src="https://azlancom.files.wordpress.com/2021/05/screenshot_20210521-2228056456091065855278021.png?w=473" alt="" class="wp-image-50"/></figure>
+
+<h2 id="references">References</h2>
+
+<p>Posey, D., &amp; Mozayani, A. (2007). The estimation of blood alcohol concentration : Widmark revisited. Forensic science, medicine, and pathology, 3(1), 33–39.</p>
+
+<p>Brouwer I. G. (2004). The Widmark formula for alcohol quantification. SADJ : journal of the South African Dental Association = tydskrif van die Suid-Afrikaanse Tandheelkundige Vereniging, 59(10), 427–428.</p>
+
+<p>Koperska M. (2020). Total Body Water Calculation https://www.omnicalculator.com/health/body-water Omni.</p>
+
+</body>
+</html>

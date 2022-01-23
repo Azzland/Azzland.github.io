@@ -1,0 +1,34 @@
+body {
+  background-color: rgb(204, 255, 255);
+}
+
+#projecttitle {
+  background-color: #333399;
+}
+
+h1 {
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+  text-align: center;
+}
+h2, h3 {
+  color: #333399;
+  font-family: serif;
+}
+p {
+  color: black;
+  font-family: Arial;
+  background-color: rgb(204, 255, 255);
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+a {
+  color: red;
+  font-family: Arial;
+}
+
+
